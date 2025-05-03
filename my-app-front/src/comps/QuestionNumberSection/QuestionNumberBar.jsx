@@ -8,6 +8,7 @@ function QuestioneNumberBar({
   currentQuestionNum,
   setCurrentQuestionNum,
   numOfQuestion,
+  setNumOfQuestion
 }) {
   function setCurrentQuestionNumWithIsVisited(num) {
     if (num === currentQuestionNum) return;
@@ -20,20 +21,32 @@ function QuestioneNumberBar({
     setCurrentQuestionNum(num);
   }
 
+  function addQuestion(){
+    setNumOfQuestion(numOfQuestion + 1); 
+  }
+
   return (
     <div class="question-box">
       <QuestioneNumber questionNum={currentQuestionNum}></QuestioneNumber>
       <div class="question-place-holders">
-        {Array.from({ length: questionStatus.length }).map((_, x) => (
+        {Array.from({ length: numOfQuestion }).map((_, x) => (
           <QuestionNumberPlaceHolder
             key={x + 1}
             questionNum={x + 1}
             setCurrentQuestionNumWithIsVisited={
               setCurrentQuestionNumWithIsVisited
-            }
-            status={questionStatus[x]}
+            } 
           />
         ))}
+        <div>
+          <QuestionNumberPlaceHolder
+            key={"adder"}
+            questionNum={'➕'}
+            setCurrentQuestionNumWithIsVisited={
+              addQuestion
+            }
+          ></QuestionNumberPlaceHolder>
+        </div>
       </div>
     </div>
   );

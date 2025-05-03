@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Option from "./Option";
 
 function QuizzQuestionPaga({
@@ -7,28 +8,45 @@ function QuizzQuestionPaga({
   status,
   setQuestionStatus,
 }) {
-  function lockAnswer(num) {
-    const updatedStatus = [...status];
-    updatedStatus[inx] = {
-      ...updatedStatus[inx],
-      isAnswered: true,
-      lockedOption: num,
-    };
-    setQuestionStatus(updatedStatus);
+  // function lockAnswer(num) {
+  //   const updatedStatus = [...status];
+  //   updatedStatus[inx] = {
+  //     ...updatedStatus[inx],
+  //     isAnswered: true,
+  //     lockedOption: num,
+  //   };
+  //   setQuestionStatus(updatedStatus);
+  // }
+
+  const [opt,setOpt] = useState()
+
+  function addOption() {
+    const option = prompt("enter your option");
+    if(option){
+      options.push(option); 
+      setOpt();
+    }
   }
 
+   
   return (
     <div>
-      <div class="question">{question}</div>
-      <div class="options">
-        {Array.from({ length: options.length }).map((_, option) => (
+      <div>
+        <div class="question">{question}</div>
+        <div class="options">
+          {Array.from({ length: opt.length }).map((_, option) => (
+            <Option
+              optionData={opt[option]}
+              // selectOption={}
+              // status={status[inx]}
+            />
+          ))}
           <Option
-            optionNumber={option + 1}
-            optionData={options[option]}
-            selectOption={() => lockAnswer(option + 1)}
-            status={status[inx]}
-          />
-        ))}
+            optionData={'➕'}
+            selectOption={addOption}
+          >
+          </Option>
+        </div>
       </div>
     </div>
   );

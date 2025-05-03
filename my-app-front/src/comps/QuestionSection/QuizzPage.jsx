@@ -21,12 +21,12 @@ function QuizzPaga({
     <div>
       <QuizzQuestionPaga
         inx={currentQuestionNum - 1}
-        question={"why are you ?"}
-        options={["_1", "_2", "_3", "_4"]}
+        question={questionStatus[currentQuestionNum - 1].question}
+        options={questionStatus[currentQuestionNum - 1].options}
         status={questionStatus}
         setQuestionStatus={setQuestionStatus}
       />
-      <div>
+      {/* <div>
         <button
           class="next-button"
           style={{
@@ -55,7 +55,7 @@ function QuizzPaga({
         >
           pre
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

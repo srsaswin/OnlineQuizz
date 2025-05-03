@@ -1,11 +1,11 @@
-function Option({ optionNumber, optionData, selectOption, status }) {
+function Option({  optionData, selectOption, status }) {
   return (
     <div
       class="option"
       onClick={selectOption}
-      style={{
-        color: optionNumber === status.lockedOption ? "green" : "black",
-      }}
+      // style={{
+      //   color: optionNumber === status.lockedOption ? "green" : "black",
+      // }}
     >
       <div>{optionData}</div>
     </div>
