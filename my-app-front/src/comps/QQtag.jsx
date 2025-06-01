@@ -2,17 +2,60 @@ import { useState } from "react";
 import QuestioneNumberBar from "./QuestionNumberSection/QuestionNumberBar";
 import QuizzPaga from "./QuestionSection/QuizzPage";
 
-function QQtag() {
+function QQtag({ contestName }) {
   const [currentQuestionNum, setCurrentQuestionNum] = useState(1);
   const [numOfQuestion, setNumOfQuestion] = useState(1);
   const [questionStatus, setQuestionStatus] = useState(
     [
       {
-        question:"DEMO",
-        options:[]
+        question: "",
+        options: []
       }
     ]
   );
+
+  function getDT(){
+    const time = prompt("enter time in 24Hr :- eg 21:00").split(":");
+    const day = prompt("Enter day :- eg 22.08.2005").split(".");
+    
+    const d = new Date();
+    d.setHours(time[0],time[1]);
+    d.setFullYear(day[2],day[1],day[0]);
+
+    return d.toUTCString();
+    
+  }
+
+  function saveTest() {
+    const userData = JSON.parse(document.cookie)[0];
+
+
+    fetch(
+      "http://localhost:9090/uploadcontest",
+      {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            "username": userData.username,
+            "contestName": contestName,
+            "duration":{
+              start: String(getDT()),
+              end : String(getDT())
+            },
+            "questionStatus": questionStatus
+          }
+        )
+      }
+    )
+      .then(d => d.json())
+      .then(d => {
+        if (d.ok) navigation.back();
+      })
+      .catch((err) => console.log("invalied contest entry"));
+  }
 
   return (
     <div style={{ display: "flex" }}>
@@ -34,6 +77,7 @@ function QQtag() {
           setQuestionStatus={setQuestionStatus}
           currentQuestionNum={currentQuestionNum}
           setCurrentQuestionNum={setCurrentQuestionNum}
+          saveTest={saveTest}
         />
       </div>
     </div>

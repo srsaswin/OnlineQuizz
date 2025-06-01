@@ -1,0 +1,17 @@
+#teacherHome-body{
+    display: flex;
+    height: 50vh;
+}
+
+#teacherHome-spliter{
+    margin: 1px 10px;
+    width: 1px;
+    height: 100%;
+    background: #000;
+}
+
+#teacherHome-createcontest-button{
+    width: 37vw;   
+    height: 100%;
+}
+

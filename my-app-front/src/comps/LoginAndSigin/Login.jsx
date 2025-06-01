@@ -42,9 +42,9 @@ function Login() {
         }).then(d => {
             if (d.ok) {
                 const data = new Date();
-                const expDate = new Date(data.getTime() + (60 * 60 * 1000)); 
+                const expDate = new Date(data.getTime() + (60 * 60 * 1000));
                 document.cookie = `${JSON.stringify(d.payload.userData)}; expires=Sun, ${expDate.toUTCString()}; path =/`
-                nav("/TeacherLogin");
+                nav("/Home");
             } else {
                 alert(d.payload.message);
             }
@@ -56,7 +56,7 @@ function Login() {
     return (
         <div className="login-box">
             <form onSubmit={loginCheck}>
-                <h1>Username or Email</h1>
+                <h1>Username</h1>
                 <input id="emailUsername" type="text" required />
                 <h1>Password</h1>
                 <input id="pass" type="password" required />

@@ -1,42 +1,5 @@
-// // // (async () => {
-// // //     const rawdata = await fetch("http://localhost:9090/login", {
-// // //         method: 'POST',
-// // //         headers: {
-// // //             'Content-Type': 'application/json'
-// // //         },
-// // //         body: JSON.stringify({
-// // //             username: 'mohan',
-// // //             password: '1214'
-// // //         })
-// // //     });
+const c = [1,2,34,23,32,12];
 
-// // //     const d = await rawdata.json();
-// // //     console.log(d);
-// // // })();
+const cc = c.filter(v=>v !== 1)
 
-// // fetch("http://localhost:9090/login", {
-// //     method: "POST",
-// //     headers: {
-// //         'Content-Type': 'application/json'
-// //     },
-// //     body: JSON.stringify({
-// //         "username": "mohan",
-// //         "password": "1214"
-// //     })
-// // }).then(r=>{
-// //     return r.json()
-// // }).then(d=>console.log(d)
-// // )
-
-
-
-
-// const data = new Date();
-// const expDate = new Date(data.getTime() + (3 * 60 * 60 * 1000));
-// console.log(data.toUTCString());
-// console.log(expDate.toUTCString());
-
-
-
-const arr = [];
-arr.
+console.log(cc);

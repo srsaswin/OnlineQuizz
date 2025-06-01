@@ -4,8 +4,8 @@ function QuestionNumberPlaceHolder({
 }) {
   return (
     <div
-      class="question-place-holder"
-      onClick={() => setCurrentQuestionNumWithIsVisited(questionNum)} 
+      className="question-place-holder"
+      onClick={setCurrentQuestionNumWithIsVisited}
     >
       <div>{questionNum}</div>
     </div>

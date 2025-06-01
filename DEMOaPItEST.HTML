@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #message1 {
+    position: relative; 
+    background-color: aqua;
+    height: 1000px;
+    z-index: 1;
+}
+
+#message2 {
+    position: relative;
+    top: 0; 
+    background-color: black;
+    color: white;
+    height: 100px;
+    z-index: 2;
+}
+
+    </style>
 </head>
 <body>
-    <h1 id="message">loading....</h1>
-    <script>
+    <h1 id="message1">hi</h1>
+    <h2 id="message2">hello</h2>
+    <!-- <script>
         fetch("http://localhost:9090")
         .then(response =>{
             if(!response.ok){
@@ -17,6 +36,6 @@
         }).then(data =>{
             document.getElementById("message").textContent = data;
         })
-    </script>
+    </script> -->
 </body>
 </html>

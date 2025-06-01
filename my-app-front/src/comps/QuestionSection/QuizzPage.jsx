@@ -6,16 +6,46 @@ function QuizzPaga({
   setQuestionStatus,
   currentQuestionNum,
   setCurrentQuestionNum,
+  saveTest
 }) {
-  function setPageNumberAndVisited(num, action) {
-    const updataStatus = [...questionStatus];
-    updataStatus[currentQuestionNum - 1] = {
-      ...updataStatus[currentQuestionNum - 1],
-      isVisited: true,
-    };
-    setQuestionStatus(updataStatus);
-    setCurrentQuestionNum(currentQuestionNum + num);
+
+  function isNotOk() {
+    const currentQuestion = questionStatus[currentQuestionNum - 1];
+
+
+    if (!currentQuestion.question) {
+      alert("enter valied question!");
+      return true;
+    }
+
+    if (!currentQuestion.correctOption || currentQuestion.correctOption === 0 || currentQuestion.correctOption > currentQuestion.options.length) {
+      alert("invalied correctOption " + currentQuestion.correctOption);
+      return true;;
+    }
+    return false;
   }
+
+  function submit() {
+    if (isNotOk()) return;
+    saveTest();
+  }
+
+
+
+  function addQustion() {
+
+    if (isNotOk()) return;
+
+    const newQuestionStatus = [...questionStatus, {
+      // key:'1',
+      question: "",
+      options: [],
+      correctOption: null
+    }];
+    setQuestionStatus(newQuestionStatus);
+    setCurrentQuestionNum(newQuestionStatus.length)
+  }
+
 
   return (
     <div>
@@ -23,39 +53,17 @@ function QuizzPaga({
         inx={currentQuestionNum - 1}
         question={questionStatus[currentQuestionNum - 1].question}
         options={questionStatus[currentQuestionNum - 1].options}
-        status={questionStatus}
+        status={questionStatus[currentQuestionNum - 1]}
         setQuestionStatus={setQuestionStatus}
       />
-      {/* <div>
-        <button
-          class="next-button"
-          style={{
-            display:
-              currentQuestionNum === questionStatus.length ? "none" : "block",
-          }}
-          onClick={() => setPageNumberAndVisited(1)}
-        >
-          next
-        </button>
-
-        <button
-          class="submit-button"
-          style={{
-            display:
-              currentQuestionNum !== questionStatus.length ? "none" : "block",
-          }}
-        >
-          submit
-        </button>
-
-        <button
-          class="pre-button"
-          style={{ display: currentQuestionNum === 1 ? "none" : "block" }}
-          onClick={() => setPageNumberAndVisited(-1)}
-        >
-          pre
-        </button>
-      </div> */}
+      <div>
+        <button onClick={addQustion}>
+          next qustion
+        </button>{currentQuestionNum != 0 &&
+          <button onClick={submit}>
+            submit
+          </button>}
+      </div>
     </div>
   );
 }
