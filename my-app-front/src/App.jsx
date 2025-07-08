@@ -10,6 +10,7 @@ import NavBar from './comps/NavBar';
 import NewContest from './comps/InitTest/NewContest';
 import Home from './comps/Home/Home';
 import TTpage from './comps/TestContest/TTpage';
+import StartContest from './comps/Home/StartContest';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/Signin' element={<Sigin />} />
             <Route path='/newContest' element={<NewContest />} />
             <Route path='/TTcontest' element={<TTpage/>} />
+            <Route path='/startContest' element={<StartContest/>}/>
           </Routes>
         </BrowserRouter>
     </>

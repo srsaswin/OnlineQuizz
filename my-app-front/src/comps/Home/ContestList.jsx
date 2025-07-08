@@ -17,6 +17,7 @@ function ContestList({ username, typeOfList }) {
       .then(r => r.json())
       .then(r => {
         setContestList(r)
+        console.log(r)
       });
   }, []);
 

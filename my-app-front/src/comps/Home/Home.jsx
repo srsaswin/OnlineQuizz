@@ -36,9 +36,7 @@ function Home() {
         <div>
           <div id='teacherHome-body'>
             <button id="teacherHome-createcontest-button" onClick={()=>{
-              const contestIdToJoin = prompt("put contest id here");
-              localStorage.setItem("joinContestId",contestIdToJoin);
-              nav("/TTcontest")
+              nav("/startContest")
             }}>
               join contest
             </button>

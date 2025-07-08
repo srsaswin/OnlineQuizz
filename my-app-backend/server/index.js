@@ -76,7 +76,8 @@ server.get("/contest/:id", async (req, res) => {
         res.status(200).send(JSON.stringify({
             ok: true,
             payload: {
-                contest: contestReq,
+                contestName:contestReq.contestName,
+                contest: contestReq.questionStatus,
                 message: "hai hai hai"
             }
         }));

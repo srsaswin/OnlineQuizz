@@ -1,5 +1,11 @@
-const c = [1,2,34,23,32,12];
+let n = 8
 
-const cc = c.filter(v=>v !== 1)
+let count = 0
 
-console.log(cc);
+while(n != 1){
+    if(n % 2 != 0) count ++;
+    count++;
+    n = (n / 2) | 0
+}
+
+console.log(count)
