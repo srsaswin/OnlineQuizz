@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import "D:/study/project/OnlineQuizz/my-app-front/src/comps/TestContest/.css"
+import React, { useEffect, useRef, useState } from 'react' 
 import ContestHeader from './TTcompcluster/ContestHeader';
 
 function TTpage() {

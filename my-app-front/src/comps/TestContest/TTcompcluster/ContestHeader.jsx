@@ -1,36 +1,45 @@
 import React, { useEffect, useRef, useState } from 'react';
+import "./.css";
 
 function ContestHeader({ name, time, submit }) {
-  const [timer, setTimer] = useState(time);
-  const intervalRef = useRef({ f: true }); // ref object with 'f' flag
+  const intervalId = useRef(null);
+  const hasSubmitted = useRef(false);
+  const [timerCounter, setTimerCounter] = useState(time);
+
+  function submitHere() {
+    if (hasSubmitted.current) return;
+    hasSubmitted.current = true;
+    clearInterval(intervalId.current);
+    submit();
+  }
 
   useEffect(() => {
-    intervalRef.current = {
-      ...intervalRef.current,
-      id: setInterval(() => {
-        setTimer(prev => {
-          if (prev <= 1) {
-            clearInterval(intervalRef.current.id);
-            if (intervalRef.current.f) {
-              submit(); // only submit once
-              intervalRef.current.f = false;
-            }
-            return 0;
+    intervalId.current = setInterval(() => {
+      setTimerCounter((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(intervalId.current);
+          if (!hasSubmitted.current) {
+            hasSubmitted.current = true;
+            submit();
           }
-          return prev - 1;
-        });
-      }, 1000),
-    };
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
 
     return () => {
-      clearInterval(intervalRef.current.id);
+      clearInterval(intervalId.current);
     };
   }, [submit]);
 
   return (
-    <div id="contestheader">
-      <div id="contest-name">{name}</div>
-      <div id="timer">{formatTime(timer)}</div>
+    <div class='f'>
+      <div class='f c cn'><h1>{name}</h1></div>
+      <div class='f dd'>
+        <h1>{formatTime(timerCounter)}</h1>
+        <button onClick={submitHere}>submit</button>
+      </div>
     </div>
   );
 }

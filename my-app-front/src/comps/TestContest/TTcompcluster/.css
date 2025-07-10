@@ -1,0 +1,15 @@
+.f{
+    display: flex;
+}
+
+.c{
+    justify-content: center;
+}
+
+.cn{
+    width: 85%;
+}
+
+.dd{
+    gap: 50%;
+}
