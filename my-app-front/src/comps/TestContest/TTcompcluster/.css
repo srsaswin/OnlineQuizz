@@ -13,3 +13,26 @@
 .dd{
     gap: 50%;
 }
+
+.crl{
+    height: 3rem;
+    width: 3rem;
+    border-radius:100%;
+    margin: 10px;
+}
+
+.fh{
+    height: 100px;
+}
+
+.w1{
+    width: 1px;
+}
+
+.bb{
+    background-color:#000;
+}
+
+.col{
+    flex-direction: column;
+}
